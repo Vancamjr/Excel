@@ -1,0 +1,905 @@
+<html><head>
+    
+        <title>Mozilla ActiveX control</title>
+        <meta http-equiv="Content-Type" content="text/html; 
+charset=UTF-8">
+        <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+        <meta name="ProgId" content="FrontPage.Editor.Document">
+        <link rel="STYLESHEET" 
+href="MozillaControl%201712%20help_files/mozilla.css">
+    </head><body>
+        <div id="main">
+            <div class="sidebar" id="textbar">
+                <p><a 
+href="http://www.iol.ie/%7Elocka/mozilla/mozilla.htm">Back to Main Page</a></p>
+                <hr>
+                <p><a href="#introduction">Introduction</a></p>
+                <p><a href="#download">Download it</a></p>
+                <p><a href="#source">Build from source</a></p>
+                <p><a href="#installing">Installing it</a></p>
+                <p><a href="#usingIt">Using it with...</a></p>
+                <p><a href="#porting">Porting IE code to Mozilla</a></p>
+                <p><a href="#api">More Documentation</a></p>
+	<hr>
+        <div id="google">
+          <script type="text/javascript" src="MozillaControl%201712%20help_files/google_side.js"></script>
+          <script type="text/javascript" src="MozillaControl%201712%20help_files/show_ads.js"></script><script src="MozillaControl%201712%20help_files/expansion_embed.js"></script><script src="MozillaControl%201712%20help_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins
+ style="display: inline-table; border: medium none; height: 240px; 
+margin: 0pt; padding: 0pt; position: relative; visibility: visible; 
+width: 120px;"><ins style="display: block; border: medium none; height: 
+240px; margin: 0pt; padding: 0pt; position: relative; visibility: 
+visible; width: 120px;"><iframe allowtransparency="true" hspace="0" 
+id="google_ads_frame1" marginheight="0" marginwidth="0" 
+name="google_ads_frame" src="MozillaControl%201712%20help_files/ads.htm"
+ style="left: 0pt; position: absolute; top: 0pt;" vspace="0" 
+scrolling="no" frameborder="0" height="240" width="120"></iframe></ins></ins>
+        </div>
+
+	</div>
+            <div id="content">
+                <h1>Mozilla ActiveX Control</h1>
+                <h2><a name="introduction">Introduction</a></h2>
+                <h3>Motivation</h3>
+                <p class="quote">"Wouldn't it be great if the Mozilla 
+browser engine were an Active 
+                    control that could be embedded as in applications?"</p>
+                <p>That's a question that myself and other had asked on 
+the Mozilla groups soon 
+                    after the Mozilla project began. And further:</p>
+                <p class="quote">"Wouldn't it be great if the Mozilla 
+control used the same API as 
+                    the Internet Explorer control?"</p>
+                <p>The aim of this project is to be both of these 
+things.</p>
+                <h3>Why?</h3>
+                <p>Previous versions of Netscape Communicator/Navigator 
+were arguably superior to 
+                    IE as day to day browsers but they suffered through 
+their immediate usability 
+                    and modularity. Although the Netscape browser was 
+great as a standalone 
+                    application, it wasn't possible to utilize that 
+functionality in third party 
+                    applications. On the other hand, Internet Explorer 
+shipped with an ActiveX 
+                    control which allowed exactly that ability.</p>
+                <p>Take a look at some of the applications that already 
+use the IE control:
+                </p>
+                <ul>
+                    <li>
+                        <a href="http://www.aol.com/">AOL</a>
+                    - For displaying a web pages in the AOL client
+                    </li><li>
+                        <a href="http://www.eb.com/">Encyclopaedia 
+Britannica</a>
+                    (CD)
+                    </li><li>
+                        <a href="http://encarta.msn.com/EncartaHome.asp">Microsoft
+ Encarta </a>
+                    Encyclopaedia &amp; World Atlas (Globe)
+                    </li><li>
+                        <a href="http://www.microsoft.com/office/">Microsoft
+ Outlook</a>
+                    - For HTML mail
+                    </li><li>
+                        <a 
+href="http://msdn.microsoft.com/vstudio/default.asp">Microsoft Studio</a>
+                    - For online help
+                    </li><li>
+                        <a href="http://www.eudora.com/">Qualcomm Eudora</a>
+                    - For HTML mail
+                    </li><li>
+                        <a href="http://www.neoplanet.com/">Neoplanet</a>
+                    - Another skin, this time commercial
+                    </li><li>
+                        <a href="http://www.custombrowser.com/">Custom 
+Browser</a>
+                    - Made to measure browsers
+                    </li><li>
+                        <a href="http://www.activeworlds.com/">Active 
+Worlds</a>
+                    -VR conferencing that allows browsing in a pane
+                    </li><li>
+                        <a href="http://www.quicken.com/">Intuit Quicken</a>
+                    - For reports and statements
+                    </li><li>
+                        <a href="http://www.bradsoft.com/">TopStyle</a>
+                    A spiffy style sheet editor
+                    </li><li>
+                        <a href="http://www.allaire.com/">Allaire 
+Coldfusion</a> - Web site authoring 
+                        and server side scripting package.</li>
+                    <li><a href="http://www.chami.com/html-kit/">HTML-Kit</a>
+ - HTML development environment</li>
+                </ul>
+                <p>There are hundreds of others apps, some commercial 
+and probably many more 
+                    running in intranets all over the world.</p>
+                <p>So what would it take for developers to use the 
+Mozilla control as opposed to 
+                    the IE control?
+                </p>
+                <ul>
+                    <li>
+                    An API close as possible to Internet Explorer's for 
+ease of porting
+                    </li><li>
+                    Freely available source code to allow for bug 
+fixing, customization, etc.
+                    </li><li>
+                    A very small distributable - 3-4Mb (for a download 
+containing just the Gecko 
+                    embedding engine and not the full Mozilla) compared 
+to the 10Mb+ required for 
+                    IE
+                    </li><li>
+                    State of the art rendering - exploit the speed and 
+standards compliance of the 
+                    Gecko rendering engine
+                    </li><li>
+                        No more nasty IE license - have you <a 
+href="http://www.microsoft.com/windows/ieak/en/licensing/external/default.asp">
+                            read it</a>?&nbsp;</li>
+                </ul>
+                <h2><a name="control_impl">ActiveX Control 
+Implementation</a></h2>
+                <h3>Not just a similar API</h3>
+                <p>An identical one! That's right, the Mozilla control 
+will implement the 
+                    IWebBrowser and DWebBrowserEvents interfaces that 
+Microsoft have already 
+                    defined for Internet Explorer.
+                </p>
+                <p>Since the Mozilla control implements exactly the same
+ API, it will mean that 
+                    developers can take existing IE code and port it, 
+sometimes in a matter of 
+                    minutes!</p>
+                <p>The only modification required may be to replace the 
+line that creates the 
+                    control of type CLSID_WebBrowser with one of 
+CLSID_MozillaBrowser. VB 
+                    developers must delete the IE control from their 
+project and insert a Mozilla 
+                    one with the same instance name.</p>
+                <p>Let's look at what the IE control exposes 
+interface-wise to the world:
+                </p>
+                <ul>
+                    <li>
+                    IWebBrowser - containing methods such as Navigate, 
+GoBack, GoForward, Refresh
+                    </li><li>
+                    IWebBrowser2 and IWebBrowserApp - Extra executable 
+specific methods that 
+                    Mozilla partially implements
+                    </li><li>
+                    DWebBrowserEvents - containing outgoing events that 
+the control fires when the 
+                    user or browser does something the application 
+should know about such as 
+                    finishing page loading or clicking on a hyperlink
+                    </li><li>
+                        DWebBrowserEvents2 - More outgoing events 
+introduced by IE4.0</li>
+                </ul>
+                <p>Obviously an application will not be so portable if 
+it is viewing IE specific 
+                    HTML such as VBScript, ActiveX controls or DHTML. In
+ this case, the application 
+                    may need to modify the HTML content in order to be 
+compatible.</p>
+                <h3>Why not just use native Gecko API calls?</h3>
+                <p>Gecko is a very powerful set of APIs implemented in 
+XPCOM (COM-like) set of 
+                    interfaces. Unfortunately, it is only suitable for 
+C++ and has a steep learning 
+                    curve that may not appeal to some. So if you're a VB
+ or Delphi programmer, your 
+                    only way of using Mozilla is through the control. 
+Also, it's the easiest way to 
+                    port code that already uses IE.
+                </p>
+                <p>The Mozilla control provides the wrapper code that 
+converts between the 
+                    IWebBrowser and the internal Gecko engine interfaces
+ and catches Gecko events 
+                    and fires the appropriate ActiveX events. Since it 
+is a true ActiveX control, 
+                    it can be shipped without headers or source. All the
+ programming information is 
+                    stored in the DLL as a type library and is therefore
+ language independent.</p>
+                <h3>Internet Explorer DOM support</h3>
+                <p>The IE wrapper control will implement a simple DOM 
+using the same COM interfaces 
+                    as you find in Internet Explorer 4.0, i.e.
+                </p>
+                <ul>
+                    <li>
+                    IHtmlDocument2
+                    </li><li>
+                    IHtmlElement
+                    </li><li>
+                    IHtmlElementCollection
+                    </li><li>
+                        Etc.</li>
+                </ul>
+                <p>This enables the client application to parse the 
+contents of a page 
+                    programmatically and even modify the page.</p>
+                <p>It is important to note that the Mozilla control will
+ not have a complete 
+                    implementation of the DOM since it is extremely 
+complex. Here is what you can 
+                    expect:
+                </p>
+                <ul>
+                    <li>
+                    Implementation of most common element types
+                    </li><li>
+                    Retrieve element info such as class name, id etc.
+                    </li><li>
+                    Traversal functions. Parse the DOM using methods 
+such as get_children, get_all, 
+                    get_parent etc.
+                    </li><li>
+                    Attribute setting and getting, e.g. setAttribute, 
+getAttribute etc.
+                    </li><li>
+                    Simple modifications, for instance to be able to set
+ or get text from text 
+                    elements
+                    </li><li>
+                        Integration with the ActiveX Plug-in support (if
+ present) so that ActiveX 
+                        objects in the HTML are available to clients.</li>
+                </ul>
+                <p>What you shouldn't expect:
+                </p>
+                <ul>
+                    <li>
+                    Exact DOM mapping between IE and Mozilla. The IE 
+wrapper control uses the 
+                    Mozilla (and therefore W3C DOM level 1 standard) for
+ its element hierarchy and 
+                    not the IE one.
+                    </li><li>
+                        Implementation of complicated methods. By 
+complicated I mean ones where there 
+                        is no direct mapping between the IE method and 
+the Mozilla equivalent.</li>
+                </ul>
+                <p>The interfaces for Internet Explorer 5.0 are 
+considerably more complicated and I 
+                    have not reached a decision whether I should attempt
+ to implement them in 
+                    Mozilla.</p>
+                <h3><a name="progress">Progress so far</a></h3>
+                <p>Okay, enough of the blurb, here's the current state 
+of play.</p>
+                <p>The following interfaces have been implemented 
+satisfactorily:
+                </p>
+                <ul>
+                    <li>
+                    IWebBrowser (basic web browsing functions for 
+navigation and son on)
+                    </li><li>
+                    IWebBrowserApp (some extended functions for IE, the 
+application)
+                    </li><li>
+                    IWebBrowser2 (some more functions for IE, the 
+application)
+                    </li><li>
+                    DWebBrowserEvents (basic navigation events)
+                    </li><li>
+                        DWebBrowserEvents2 (more events, mainly for the 
+IE app)</li>
+                </ul>
+                <p>Many of the methods on the IWebBrowserApp, 
+IWebBrowser2 and DWebBrowserEvents2 
+                    interfaces are implemented by dummy, no-operation 
+code since they don't have 
+                    meaning when the browser is running as a control.</p>
+                <p>In the current state of the Mozilla control, it is 
+possible to run the IEPatcher 
+                    tool on existing binaries and have them run using 
+the Mozilla control.</p>
+                <h3>Implementation details</h3>
+                <p>The Mozilla control is implemented in ATL. Anyone who
+ has tried to write complex 
+                    COM objects in raw C++ or with the hateful MFC will 
+know exactly the reasons 
+                    why I chose ATL!</p>
+                <p>Amongst the reasons for using ATL are:</p>
+                <ul>
+                    <li>
+                    MFC produces larger binaries and requires the MFC 
+DLL to be distributed for the 
+                    control to work.
+                    </li><li>
+                        Like most things in MFC, the COM support is a 
+hack and not designed very well.</li>
+                </ul>
+                <p>The main class is CMozillaBrowser which is the 
+ActiveX control itself. It 
+                    derives from CComControl plus IWebBrowser and a host
+ of ATL implementation 
+                    classes. It is a window only control and hooks the 
+WM_CREATE and WM_DESTROY 
+                    events to create and destroy the Gecko web browser 
+class.</p>
+                <p>When an IWebBrowser method is called, a piece of code
+ in CMozillaBrowser 
+                    converts the parameters to their nsIWebWidget 
+equivalents to perform the actual 
+                    operation.</p>
+                <p>For outgoing events, everything goes in the opposite 
+direction. During creation 
+                    of the Gecko web browser, CMozillaBrowser registers 
+event listeners implemented 
+                    by the CWebBrowserContainer class with Gecko. Gecko 
+calls these methods when a 
+                    page is loaded, for progress notifications and son 
+and CWebBrowserContainer 
+                    fires the equivalent IE control events out via the 
+CProxyDWebBrowserEvents 
+                    template that CMozillaBrowser inherits from.</p>
+                <h2><a name="download">Get the binaries!</a></h2>
+                <p>Standalone Mozilla ActiveX Control installers. Note 
+these contain just the 
+                    control and the parts of Mozilla Gecko it needs to 
+function. It does not 
+                    contain the full Mozilla browser.</p>
+                <p>
+                    <table id="Table1" border="0" cellpadding="1" 
+cellspacing="1" width="100%">
+                        <tbody><tr>
+                            <td><strong>Version</strong></td>
+                        </tr>
+                        <tr>
+                            <td><a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozillaControl1712.exe">Mozilla
+ ActiveX Control 1.7.12</a></td>
+                        </tr>
+                        <tr>
+                            <td><a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozillaControl177.exe">Mozilla 
+ActiveX Control 1.7.7</a></td>
+                        </tr>
+                        <tr>
+                            <td><a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozillaControl171.exe">Mozilla 
+ActiveX Control 1.7.1</a></td>
+                        </tr>
+                        <tr>
+                            <td><a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozillaControl16.exe">Mozilla 
+ActiveX Control 1.6</a></td>
+                        </tr>
+                        <tr>
+                            <td><a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozillaControl15.exe">Mozilla 
+ActiveX Control 1.5</a></td>
+                        </tr>
+                    </tbody></table>
+                </p>
+                <p>The Mozilla executable (including the control) is 
+built at Mozilla.org on a 
+                    nightly basis. You can find information about the 
+latest builds <a href="http://www.mozilla.org/binaries.html">
+                        here</a>.</p>
+                <p>Please note that nightly builds are automated and 
+represent work in progress. If 
+                    this bothers you consider using one of the more 
+stable <a href="http://www.mozilla.org/releases/milestones.html">
+                        milestone releases</a>.</p>
+                <h2><a name="source">Get the source!</a></h2>
+                <p>The ActiveX source code is part of the Mozilla source
+ tree. Tarballs are usually 
+                    to be found <a 
+href="ftp://ftp.mozilla.org/pub/mozilla/nightly/">here</a>. All 
+                    the code is contained in the subdirectory 
+                    mozilla/embedding/browser/activex/src.</p>
+                <p>Source code for IEPatcher, VBrowse and CBrowse are 
+contained in the 
+                    mozilla/embedding/browser/activex/tests 
+subdirectory. The source is also <a 
+href="http://lxr.mozilla.org/seamonkey/source/embedding/browser/activex/">
+                        online</a> courtesy of <a 
+href="http://lxr.linux.no/">LXR</a>.</p>
+                <h3><a name="building">Building it</a></h3>
+                <p>The control is built as part of the normal Mozilla 
+Win32 build process. Follow 
+                    the instructions on the Mozilla.org website to build
+ Mozilla:</p>
+                <ol>
+                    <li>
+                        <a href="http://www.mozilla.org/source.html">Instructions
+ to obtain the source code</a>
+                    </li><li>
+                        <a 
+href="http://www.mozilla.org/build/win32.html">Instructions to build 
+Mozilla on 
+                            Win32</a></li>
+                </ol>
+                <p>Refer to Mozilla.org or <a 
+href="news:netscape.public.mozilla.builds">netscape.public.mozilla.builds</a>
+                    if you have difficulties building Mozilla.</p>
+                <p><i>Note: You cannot build the control standalone! The
+ control depends on libraries 
+                        and header files that you only get from building
+ the whole Mozilla!&nbsp;</i></p>
+                <h4>A note about compilers</h4>
+                <p>The ActiveX control is particularly finicky about 
+compilers since it uses the 
+                    ATL libraries which have been known to clash with 
+certain Platform SDKs. Please 
+                    see below for certain notes to avoid problems.</p>
+                <h4>DevStudio 7.1 (.NET 2003)</h4>
+                <p>I don't own .NET 2003 but I've had no reports of 
+issues and assume it works.</p>
+                <h4>DevStudio 7 (.NET 2002)</h4>
+                <p>There are no special requirements for this build 
+except that your configuration 
+                    matches that specified by Mozilla build instructions
+ (GNU make, cygwin etc.).</p>
+                <h4>DevStudio 6</h4>
+                <p>There are no special requirements for DevStudio 6 
+except that you apply the 
+                    latest service pack (at least SP5). You do not need 
+to install a Win32 Platform 
+                    SDK but if you have I recommend that you remove 
+references to it from your 
+                    PATH, INCLUDE and LIB environment variables before 
+commencing a build.&nbsp;</p>
+                <h4>DevStudio 5</h4>
+                <p><em>Note: Nov 2003 - I have absolutely no idea if it 
+still builds in DevStudio 5. 
+                        Miracles happen, but you're on your own I'm 
+afraid.</em></p>
+                <p><i>Note: DevStudio 5 is no longer supported, but 
+these old instructions might still 
+                        be valid.</i>
+                </p>
+                <p>The default installation of DevStudio 5 is broken, 
+especially with regard to its 
+                    ActiveX and IDL support. Therefore, you need to do a
+ little work before you can 
+                    build the control:
+                </p>
+                <ul>
+                    <li>
+                    Apply the Devstudio 5 Service Pack 3
+                    </li><li>
+                        Install the <a 
+href="http://msdn.microsoft.com/developer/sdk/platform.asp">Win32 
+                            Platform SDK</a>
+                    (January 1998 or later). Only the base set of files 
+is required, i.e. those 
+                    installed by iBLDENV.Exe
+                    </li><li>
+                        Ensure your LIB, INCLUDE and PATH environment 
+variables all reference the 
+                        Win32SDK paths <em>before</em> their DevStudio 
+equivalents. For example:<pre>  set PATH=c:\winsdk\bin;c:\progra~1\devstudio\bin;%PATH%
+      set INCLUDE=c:\winsdk\include;c:\progra~1\devstudio\include;%INCLUDE%
+      set LIB=c:\winsdk\lib;c:\progra~1\devstudio\lib;%LIB%</pre>
+                    </li>
+                </ul>
+                <h2><a name="installing">Installing it</a></h2>
+                <p>Installation should be a straightforward procedure:</p>
+                <ol>
+                    <li>
+                    Install or build mozilla
+                    </li><li>
+                    Open a DOS prompt, change to your Mozilla bin 
+directory (e.g. "cd 
+                    c:\mozilla\bin")
+                    </li><li>
+                        Type "regsvr32 mozctlx.dll"</li>
+                </ol>
+                <p>Note that building Mozilla will usually register the 
+control for you unless you 
+                    have set MOZ_NO_ACTIVEX_REGISTRATION to disable this
+ behaviour.</p>
+                <p>
+                    If regsvr32.exe is not in you path use the "Find 
+Files..." facility of 95/98/NT 
+                    to locate it and run it using its the full path.</p>
+                <p>Do not register mozctl.dll! The new mozctlx.dll now 
+contains all the PATH fixup 
+                    magic that ensures the control works correctly.</p>
+                <h3><a name="testing">Testing it</a></h3>
+                <p>The Mozilla control should work any ActiveX control 
+compatible container. This 
+                    includes:&nbsp;
+                </p>
+                <ul>
+                    <li>
+                    Visual Basic
+                    </li><li>
+                    Delphi
+                    </li><li>
+                    Visual C++
+                    </li><li>
+                    ActiveX Test Container (it comes with DevStudio)
+                    </li><li>
+                        Internet Explorer (!)</li>
+                </ul>
+                <p>Notice the last one? That's right! Since IE HTML 
+pages can contain controls, you 
+                    can test if your Mozilla control works, by following
+ this <a href="http://www.iol.ie/%7Elocka/mozilla/mozctltest1.htm">
+                        link</a>. This take you to a page containing 
+simple browser application 
+                    using the Mozilla control that runs from IE.</p>
+                <p>Most of my test work is done with an application 
+called CBrowse. This is a C++ 
+                    application that can be found in the Mozilla source 
+code tarball.</p>
+             
+             
+<h2><a name="usingIt">Using the control</a></h2>
+<p>The control is a standard ActiveX component and can be used from any 
+development environment which supports ActiveX. The sections below show 
+you how to
+use the control in popular environments.</p> 
+<ol>
+<li><a href="#usingVBNet">Visual Basic.NET</a></li>
+<li><a href="#usingVB">Visual Basic 6</a></li>
+<li><a href="#usingC">Visual C++</a></li>
+<li><a href="#usingDelphi">Delphi</a></li>
+</ol>
+<p>You may also like to read about the <a href="#usingPatcher">IE 
+patcher</a></p>
+
+<p>As Mozilla has an identical API to IE, you can program it using the 
+documentation for Microsoft's WebBrowser&nbsp;-&nbsp;<a 
+href="http://msdn.microsoft.com/workshop/browser/WebBrowser/WebBrowser.asp">Reusing
+ the WebBrowser Control</a></p>
+
+
+<h3><a name="usingVBNet">Visual Basic.NET</a></h3>
+<p>The Mozilla Browser control should be usable from any automation 
+control 
+                    container. This includes Visual Basic .NET, so 
+follow these steps to add the control 
+                    to your VB project:
+                </p>
+<ul>
+
+                    <li>
+                    Install the control / or compile it and ensure it is
+ registered.
+                    </li><li>
+                    In the "View" menu, click "Toolbox" 
+                    </li><li>
+                    Click the "Components" tab
+                    </li><li>
+                    Right-click anywhere in the "Toolbox" and click 
+"Customize Toolbox..."
+                    </li><li>
+                    In the "COM Components" tab, check the 
+"MozillaBrowser Class" and click "OK"
+                    </li><li>
+                        The Mozilla Browser control should now appear as
+ "Browser" in the "Toolbox" for insertion into 
+                        any application. (Click and drag onto your form)</li>
+                        </ul>
+             
+                <h3><a name="usingVB">Visual Basic 6</a></h3>
+                <p>The Mozilla Browser control should be usable from any
+ automation control 
+                    container. This includes Visual Basic, so follow 
+these steps to add the control 
+                    to your VB project:
+                </p>
+                <ul>
+                    <li>
+                    Install the control / or compile it and ensure it is
+ registered.
+                    </li><li>
+                    Right mouse over the VB control bar and select 
+"Components...".
+                    </li><li>
+                    Choose "MozillaControl 1.0 Type Library" from the 
+list of controls
+                    </li><li>
+                        The Mozilla Browser control should now appear in
+ the toolbar for insertion into 
+                        any application</li>
+                </ul>
+                <p>Once the control is inserted, you should be able to 
+directly call the events, 
+                    methods and properties it exposes. The latest 
+control source contains an 
+                    example VB project called VBrowse.</p>
+                <p>Note: Save your project often! Bugs in the 
+alpha-quality Mozilla will crash your 
+                    development environment and will wipe out any 
+unsaved work you may have.</p>
+                <h4>VBrowse test harness</h4>
+                <p>This is a test application I have written in Visual 
+Basic to test the Mozilla 
+                    control (and in future compare it to the IE 
+control). It takes the form of a 
+                    simple web browser app which should increase in 
+functionality as the control 
+                    becomes more complete. To use it, simply run the 
+executable (or hit play from 
+                    VB) and then use it like a web browser.</p>
+                <p>Here's a <a 
+href="http://www.iol.ie/%7Elocka/mozilla/vbrowse.gif">picture</a>!</p>
+                        
+                <h4>Porting a VB project from IE control</h4>
+                <ol>
+                    <li>
+                    Launch VB and load the project to port.
+                    </li><li>
+                    Select the menu "Project|Components..." and from the
+ dialog, check the 
+                    "MozillaControl 1.0 Type Library"
+                    </li><li>
+                    Load each form the in the project containing the IE 
+control.
+                    </li><li>
+                    Delete each IE browser control in the project and 
+replace it with a Mozilla 
+                    control, ensuring the variable name is the same for 
+the old and new controls.
+                    </li><li>
+                        Run</li>
+                </ol>  
+                
+                <h3><a name="usingC">Visual C++</a></h3>
+                <p>ActiveX controls are slightly more tricky to use from
+ C++, however here are 3 
+                    ways you can use the control.</p>
+                <h4>Subclassing CHtmlView</h4>
+                <p>MFC provides a CHtmlView class which may be used to 
+instantiate the Internet 
+                    Explorer control. Since the Mozilla control is API 
+compatible, the steps are 
+                    practically identical as using CHtmlView, except for
+ overriding the Create 
+                    method.</p>
+                <p>a) Edit stdafx.h and add "#include &lt;afxhtml.h&gt;"
+ to pull in the CHtmlView 
+                    class.</p>
+                <p>b) Derive your view class from CHtmlView and replace 
+all calls to CView in your 
+                    class to CHtmlView, e.g. in the IMPLEMENT_DYNCREATE 
+macros and elsewhere.</p>
+                <p>c) Override the default Create method of CHtmlView 
+with your own:</p>
+                <p>In the .h file add:</p>
+                <blockquote>
+                    <pre>public:
+    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName,
+    DWORD dwStyle, const RECT&amp; rect, CWnd* pParentWnd, UINT nID,
+    CCreateContext* pContext = NULL);</pre>
+                </blockquote>
+                <p>In the .cpp file add:</p>
+                <blockquote>
+                    <pre>BOOL CHtmlView::Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName,
+						DWORD dwStyle, const RECT&amp; rect, CWnd* pParentWnd,
+						UINT nID, CCreateContext* pContext)
+{
+    // create the view window itself
+    m_pCreateContext = pContext;
+    if (!CView::Create(lpszClassName, lpszWindowName,
+    dwStyle, rect, pParentWnd, nID, pContext))
+    {
+        return FALSE;
+    }
+
+    AfxEnableControlContainer();
+
+    RECT rectClient;
+    GetClientRect(&amp;rectClient);
+
+    const CLSID CLSID_MozillaBrowser = { 0x1339B54C, 0x3453, 0x11D2,
+        { 0x93, 0xB9, 0x00, 0x00,
+          0x00, 0x00, 0x00, 0x00 } };
+
+    // create the control window
+    // AFX_IDW_PANE_FIRST is a safe but arbitrary ID
+    if (!m_wndBrowser.CreateControl(CLSID_MozillaBrowser, lpszWindowName,
+        WS_VISIBLE | WS_CHILD, rectClient, this, AFX_IDW_PANE_FIRST))
+    {
+        DestroyWindow();
+        return FALSE;
+    }
+
+    LPUNKNOWN lpUnk = m_wndBrowser.GetControlUnknown();
+    HRESULT hr = lpUnk-&gt;QueryInterface(IID_IWebBrowser2, (void**) &amp;m_pBrowserApp);
+    if (!SUCCEEDED(hr))
+    {
+        m_pBrowserApp = NULL;
+        m_wndBrowser.DestroyWindow();
+        DestroyWindow();
+        return FALSE;
+    }
+
+    return TRUE;
+}</pre>
+                </blockquote>
+                <p>Note that this code is practically identical to the 
+code in the 
+                    CHtmlView::Create method, the only change is 
+that&nbsp; CLSID_MozillaBrowser is 
+                    defined and supplied to the call to CreateControl 
+instead of CLSID_WebBrowser 
+                    (IE).</p>
+                <p>d) In your view's OnInitialUpdate add a line such as 
+this to see it working!</p>
+                <blockquote>
+                    <pre>Navigate2(_T("<a href="http://www.mozilla.org/">http://www.mozilla.org/</a>"), 0, _T(""));</pre>
+                </blockquote>
+                <p>Important Note: The CHtmlView::Navigate2 class calls 
+IWebBrowser::Navigate with 
+                    a target frame variant containing VT_BSTR and a NULL
+ string value. Versions of 
+                    the Mozilla control prior to Mozilla 1.3 did not 
+like this and would crash, so 
+                    specify the target as _T("") instead of NULL.</p>
+                <p>Here is a <a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozCtlDemo2.zip">sample 
+application</a> that uses CHtmlView.</p>
+                <h4>Using the Add Components dialog</h4>
+                <p>The MFC CWnd class has built-in site control support 
+and an Add Components 
+                    wizard that generates a wrapper class from any 
+installed control.</p>
+                <p>To use the Mozilla control from DevStudio 6:
+                </p>
+                <ol>
+                    <li>
+                    Create a new MFC application project.
+                    </li><li>
+                    Choose "Project|Add To Project|Components and 
+Controls..." from the menu.
+                    </li><li>
+                    From the dialog, select "Registered ActiveX 
+Controls"
+                    </li><li>
+                    Locate the "Mozilla Browser Class" icon and 
+double-click on it, confirming that 
+                    you wish to insert the control.
+                    </li><li>
+                    From the next dialog, choose a sensible name for the
+ class such as 
+                    "CWebBrowser".
+                    </li><li>
+                    Open your apps dialog in the resource editor and 
+insert a Mozilla browser using 
+                    the palette toolbar.
+                    </li><li>
+                    Right click on the browser and select ClassWizard to
+ create a variable to 
+                    represent the browser (e.g. m_Browser).
+                    </li><li>
+                    Call methods on the new browser variable to call the
+ browser class.
+                    </li><li>
+                        Use the ClassWizard to create event handlers.</li>
+                </ol>
+                <p>Here is a <a 
+href="http://www.iol.ie/%7Elocka/mozilla/MozCtlDemo.zip">sample 
+application</a> generated using the 
+                    wizards.</p>
+                <h4>CControlSite</h4>
+                <p>If you're a COM expert / purist who hates wrappers 
+then you may prefer to use 
+                    the CControlSite class that is part of the Mozilla 
+control project itself. This 
+                    is a class for hosting any ActiveX control including
+ the Mozilla control. Host 
+                    the control in the site and control it via its 
+IWebBrowser2 interface and the 
+                    usual event sink mechanisms.</p>
+                <p>The advantage of using this class is that it is based
+ on ATL and not MFC and is 
+                    therefore lighter and suitable for non-MFC projects.
+ You don't get wizards to 
+                    help you of course, but the class is much easier to 
+pull apart and understand.</p>
+                <p>The <a 
+href="http://lxr.mozilla.org/seamonkey/source/embedding/browser/activex/tests/cbrowse/">
+                        CBrowse</a> sample application demonstrates how 
+this class may be used.</p>
+                    
+                <h4>Porting a VC++ project from IE control</h4>
+                <p>Most C++ projects that use the IE control do so via a
+ wrapper class. This in 
+                    turn usually wraps the MFC CWnd class, providing 
+stub functions for creating 
+                    the browser and calling methods upon it.
+                </p>
+                <ol>
+                    <li>
+                    Locate the line that creates the IE control.
+                    </li><li>
+                    Replace the reference to CLSID_Browser with 
+CLSID_MozillaBrowser
+                    </li><li>
+                    Declare CLSID_MozillaBrowser (see below)
+                    </li><li>
+                    Compile
+                    </li><li>
+                        Run</li>
+                </ol>
+                <pre>static const CLSID CLSID_MozillaBrowser=
+{ 0x1339B54C, 0x3453, 0x11D2,
+    { 0x93, 0xB9, 0x00, 0x00,
+      0x00, 0x00, 0x00, 0x00 } };</pre>
+                        
+                <h3><a name="usingDelphi">Delphi</a></h3>
+                <p></p>
+                <p>Thanks to Nick Bradbury &amp; Irongut (Dave Murray) 
+for this section!</p>
+                <p>Here is a <a 
+href="http://www.paranoia.clara.net/articles/taming_the_lizard_with_delphi.html">
+                        comprehensive tutorial</a>.</p>
+                <p>And here is a slightly older brief rundown on how to 
+use the control from 
+                    Delphi. Follow these steps to install and register 
+the Mozilla control on your 
+                    system</p>
+                <ul>
+                    <li>
+                    Select "Import Type Library" from Delphi's Project 
+menu
+                    </li><li>
+                    Choose "MozillaControl" in the type library list and
+ click OK
+                    </li><li>
+                        Delphi's ActiveX VCL toolbar should now contain a
+ "MozillaBrowser" component</li>
+                </ul>
+                <p>You can now drop the MozillaBrowser control onto a 
+Delphi form.</p>
+                <p>The <a 
+href="http://www.iol.ie/%7Elocka/mozilla/dbrowse.zip">dbrowse</a> 
+application demonstrates a simple browser 
+                    written in Delphi.</p>
+                <p>This is <a 
+href="http://www.iol.ie/%7Elocka/mozilla/delphidemo.zip">another</a> 
+simple project that demonstrates 
+                    how to use the Mozilla control. Note that this demo 
+dynamically creates the 
+                    browser object</p>
+
+                    
+                <h3><a name="usingPatcher">Using the IE patcher tool</a></h3>
+                <p><a 
+href="http://www.iol.ie/%7Elocka/mozilla/iepatcher.zip">IEPatcher</a> is
+ a tool 
+                    to scan an executable or DLL and patch it to replace
+ instances of the IE 
+                    control with the Mozilla control. Since both 
+controls are binary compatible, 
+                    this is just a matter of replacing the 
+CLSID_WebBrowser with 
+                    CLSID_MozillaBrowser. If you have built the Mozilla 
+browser, try running the 
+                    patcher on an app that uses IE and see if it works!</p>
+                <blockquote>
+                    <p>Note: As a safety feature, the patcher does not 
+let you overwrite the original 
+                        file, but be careful all the same!</p>
+                </blockquote>
+                <p>Here's a <a 
+href="http://www.iol.ie/%7Elocka/mozilla/iepatcher.gif">picture</a>!</p>
+                    
+                    
+                
+                <hr>
+                <p><a 
+href="http://www.iol.ie/%7Elocka/mozilla/mozilla.htm">Back to Main Page</a></p>
+            </div>
+        </div>
+    </body></html>

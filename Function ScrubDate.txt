@@ -1,0 +1,69 @@
+Public Function ScrubDate(inVar As Variant) As Variant
+'input a text string with one or more dates mm/dd/yy strings and return a date (latest)
+Dim i, j, k As Integer
+Dim found As Boolean
+Dim tempDate As Date
+Dim inString, outString, checkString As String
+Dim slash As Integer       'count of slashes "/" in input string
+Dim s(1 To 10) As Integer   'a matrix of slash locations
+If IsDate(inVar) Then
+    ScrubDate = inVar
+    Exit Function
+End If
+inString = WorksheetFunction.Trim(inVar)
+outString = ""
+'scan string and capture dates only into a space separated string Examp:"3/11 5/12/12 05/02/2012"
+'adjust this to remove non date use of "/" such as "w/o" or "w/" on 10/29/12
+For i = 1 To Len(inString)
+    If InStr(1, "0123456789", VBA.Mid(inString, i, 1), 1) Then
+        'retain the number
+        outString = outString & VBA.Mid(inString, i, 1)
+    ElseIf VBA.Mid(inString, i, 1) = "/" Then
+        'check for non-date use of "/" and skip them ---- added jvc 10/29/12
+        If InStr(1, "0123456789", VBA.Mid(inString, i - 1, 1), 1) Then
+            slash = i
+            outString = outString & "/"
+        Else
+            'skip since non-numeric character preceeds the slash
+        End If
+    Else
+        'skip the character
+        If (i <> 1) And VBA.Right(outString, 1) <> " " Then
+            outString = outString & " "
+        End If
+    End If
+Next
+outString = WorksheetFunction.Trim(outString)
+found = False
+ScrubDate = DateValue("1/1/1000")
+Do While found = False
+    If InStr(1, outString, " ", 1) Then
+        checkString = WorksheetFunction.Trim(VBA.Left(outString, InStr(1, outString, " ", 1)))
+        If InStr(1, checkString, "/", 1) Then
+            tempDate = DateValue(checkString)
+        Else
+            'not a valid date
+            tempDate = DateValue("1/1/1000")
+        End If
+        'tempDate = DateValue(Worksheetfunction.Trim(Left(outString, InStr(1, outString, " ", 1))))
+        outString = WorksheetFunction.Trim(VBA.Mid(outString, InStr(1, outString, " ", 1), Len(outString)))
+        If tempDate > ScrubDate Then
+            ScrubDate = tempDate
+        End If
+    Else
+        If InStr(1, outString, "/", 1) Then
+            tempDate = DateValue(WorksheetFunction.Trim(outString))
+        Else
+            'not a valid date
+            tempDate = DateValue("1/1/1000")
+        End If
+        If tempDate > ScrubDate Then
+            ScrubDate = tempDate
+        End If
+        found = True
+    End If
+Loop
+If ScrubDate = DateValue("1/1/1000") Then
+    ScrubDate = "NA"
+End If
+End Function

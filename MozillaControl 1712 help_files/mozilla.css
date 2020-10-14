@@ -1,0 +1,159 @@
+/*
+H1, H2, H3
+{
+	font-family: Arial, sans-serif;
+}
+
+H1
+{
+	color: White;
+	background-color : Navy;
+}
+
+H2
+{
+	color: White;
+	background-color : Gray;
+}
+*/
+
+.speedbaritem
+{
+	color: White;
+	background-color: Black;
+}
+
+.speedbar
+{
+	color: White;
+	background-color: Black;
+	width: 100%;
+	border: 0px;
+	padding: 3px;
+}
+
+.speedbarcell
+{
+	color: White;
+	background-color: Black;
+	text-align: Center;
+	vertical-align: middle;
+}
+
+/*
+P
+{
+	font-family: Arial, sans-serif;
+	margin-top: 6pt;
+	margin-bottom: 6pt;
+}
+
+OL, UL
+{
+	font-family : Arial, sans-serif;
+} */
+
+.item
+{
+	margin-left: 1em;
+}
+
+.quote
+{
+	font-style: italic;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.sidetitle
+{
+	color: White;
+	background-color : Gray;
+   font-size: larger;
+   margin-top: 3pt;
+   margin-bottom: 3pt
+}
+
+.sideitem
+{
+	font-size: smaller;
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+}
+
+
+.samplecode
+{
+	font-family: "Courier New", sans-serif;
+}
+
+/*
+BODY, TD
+{
+	font-family: Arial, sans-serif;
+	background-color: #A8F0A4;
+	color : Black;
+}
+*/
+
+body {
+  background: #A8F0A4;
+  color: black;
+  font: 12px Verdana, sans-serif;
+  margin: 0; padding: 0.5em; border-width: 0;
+  min-width: 52.5em !important; position: relative;
+}
+* {font-size: 1em;}
+
+
+/* This code was brutally thieved from devedge.netscape.com! */
+
+pre, code, tt {font: 100% "Courier New", Courier, "Andale Mono", monospace;}
+
+#masthead {border: 1px solid;
+  font-family: Arial, sans-serif;
+  padding: 0; margin: 0;}
+
+#masthead h1 {font-weight: normal; font-size: 300%;
+  position: relative; z-index: 10;
+  margin: 0 0 -0.1em 0; padding: 0.5em 0.25em 0;
+  text-align: center;}
+#masthead p {text-align: center;}
+
+#main {position: relative; z-index: 20; width: 100%; border-top: 1px solid;}
+
+#content {position: absolute; top: 4.75em; margin: 0 1em 0 130px; padding: 0 2.5em 120px; width: 80%;
+  border-left: 1px solid; font: 1em/1.25em Verdana, sans-serif;}
+/* #content h1, #content h2, #content h3, #content h4 {margin: 0.5em 0 0;} */
+#content h1 {font-size: 225%;}
+#content h2 {font-size: 175%;}
+#content h3 {font-size: 150%;}
+#content h4 {margin: 1.25em 0 0; font-size: 125%;}
+#content p { margin: 0.25em 0 1.5em; font-size: 0.95em;}
+#content ul, #content ol {margin: 0.25em 0.5em 1em 2.5em; padding: 0;
+  font-size: 0.95em;}
+
+#content table {font-size: 0.95em;}
+#content table tr, #content table td {font-size: 1em;}
+
+
+.sidebar {position: absolute; top: 1.75em; font: 1em Verdana, sans-serif;width: 120px;}
+.sidebar h4 {font-size: 1em;
+  border-width: 1px; border-style: none;
+  padding: 6px 0.5em 1px 0.33em; 
+  margin: 0;
+  
+  word-spacing: 1px;}
+.sidebar h4 {
+  background-color : Gray;
+ }
+.sidebar ul {padding: 0.33em 0 0.66em; margin: 0; list-style: none;
+  font-size: 0.95em;}
+
+#textbar {left: 0; margin-top: 2.5em; width: 10em;}
+/* #textbar h4 {border-left-style: solid;} */
+#textbar p {font-size: 0.85em; margin: 1em 0.5em;}
+#textbar li {list-style: inside square;}
+
+#page-footer {border-top: 1px solid; padding: 0.25em 0.1em 0.5em; margin: 0;
+  font: 0.75em Verdana, sans-serif; text-align: left;}

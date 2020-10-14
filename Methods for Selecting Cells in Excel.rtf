@@ -1,0 +1,399 @@
+{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fcharset0 Arial;}}
+{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\ltrpar\f0\fs20 Microsoft provides programming examples for illustration only, without warranty either expressed or implied. This includes, but is not limited to, the implied warranties of merchantability or fitness for a particular purpose. This article assumes that you are familiar with the programming language that is being demonstrated and with the tools that are used to create and to debug procedures. Microsoft support engineers can help explain the functionality of a particular procedure, but they will not modify these examples to provide added functionality or construct procedures to meet your specific requirements. The examples in this article use the Visual Basic methods listed in the following table.\par
+\par
+   Method             Arguments\par
+   ------------------------------------------\par
+   Activate           none\par
+   Cells              rowIndex, columnIndex\par
+   Application.Goto   reference, scroll\par
+   Offset             rowOffset, columnOffset\par
+   Range              cell1\par
+                      cell1, cell2\par
+   Resize             rowSize, columnSize\par
+   Select             none\par
+   Sheets             index (or sheetName)\par
+   Workbooks          index (or bookName)\par
+   End                direction\par
+   CurrentRegion      none\par
+\tab\tab\tab\tab\par
+\par
+The examples in this article use the properties in the following table.\par
+\par
+   Property         Use\par
+   ---------------------------------------------------------------------\par
+   ActiveSheet      to specify the active sheet\par
+   ActiveWorkbook   to specify the active workbook\par
+   Columns.Count    to count the number of columns in the specified item\par
+   Rows.Count       to count the number of rows in the specified item\par
+   Selection        to refer to the currently selected range\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+1: How to Select a Cell on the Active Worksheet\par
+To select cell D5 on the active worksheet, you can use either of the following examples:\par
+\par
+ActiveSheet.Cells(5, 4).Select\par
+\tab\tab\tab\tab\par
+\par
+-or-\par
+\par
+ActiveSheet.Range("D5").Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+2: How to Select a Cell on Another Worksheet in the Same Workbook\par
+To select cell E6 on another worksheet in the same workbook, you can use either of the following examples:\par
+\par
+Application.Goto ActiveWorkbook.Sheets("Sheet2").Cells(6, 5)\par
+\tab\tab\tab\tab\par
+\par
+   -or-\par
+\tab\tab\tab\tab\par
+\par
+Application.Goto (ActiveWorkbook.Sheets("Sheet2").Range("E6"))\par
+\tab\tab\tab\tab\par
+\par
+Or, you can activate the worksheet, and then use method 1 above to select the cell:\par
+\par
+Sheets("Sheet2").Activate\par
+ActiveSheet.Cells(6, 5).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+3: How to Select a Cell on a Worksheet in a Different Workbook\par
+To select cell F7 on a worksheet in a different workbook, you can use either of the following examples:\par
+\par
+Application.Goto Workbooks("BOOK2.XLS").Sheets("Sheet1").Cells(7, 6)\par
+\tab\tab\tab\tab\par
+\par
+-or-\par
+\par
+Application.Goto Workbooks("BOOK2.XLS").Sheets("Sheet1").Range("F7")\par
+\tab\tab\tab\tab\par
+\par
+Or, you can activate the worksheet, and then use method 1 above to select the cell:\par
+\par
+Workbooks("BOOK2.XLS").Sheets("Sheet1").Activate\par
+ActiveSheet.Cells(7, 6).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+4: How to Select a Range of Cells on the Active Worksheet\par
+To select the range C2:D10 on the active worksheet, you can use any of the following examples:\par
+\par
+ActiveSheet.Range(Cells(2, 3), Cells(10, 4)).Select\par
+\tab\tab\tab\tab\par
+\par
+ActiveSheet.Range("C2:D10").Select\par
+\tab\tab\tab\tab\par
+\par
+ActiveSheet.Range("C2", "D10").Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+5: How to Select a Range of Cells on Another Worksheet in the Same Workbook\par
+To select the range D3:E11 on another worksheet in the same workbook, you can use either of the following examples:\par
+\par
+Application.Goto ActiveWorkbook.Sheets("Sheet3").Range("D3:E11")\par
+\tab\tab\tab\tab\par
+\par
+Application.Goto ActiveWorkbook.Sheets("Sheet3").Range("D3", "E11")\par
+\tab\tab\tab\tab\par
+\par
+Or, you can activate the worksheet, and then use method 4 above to select the range:\par
+\par
+Sheets("Sheet3").Activate\par
+ActiveSheet.Range(Cells(3, 4), Cells(11, 5)).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+6: How to Select a Range of Cells on a Worksheet in a Different Workbook\par
+To select the range E4:F12 on a worksheet in a different workbook, you can use either of the following examples:\par
+\par
+Application.Goto Workbooks("BOOK2.XLS").Sheets("Sheet1").Range("E4:F12")\par
+\tab\tab\tab\tab\par
+\par
+Application.Goto _\par
+      Workbooks("BOOK2.XLS").Sheets("Sheet1").Range("E4", "F12")\par
+\tab\tab\tab\tab\par
+\par
+Or, you can activate the worksheet, and then use method 4 above to select the range:\par
+\par
+Workbooks("BOOK2.XLS").Sheets("Sheet1").Activate\par
+   ActiveSheet.Range(Cells(4, 5), Cells(12, 6)).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+7: How to Select a Named Range on the Active Worksheet\par
+To select the named range "Test" on the active worksheet, you can use either of the following examples:\par
+\par
+Range("Test").Select\par
+\tab\tab\tab\tab\par
+\par
+Application.Goto "Test"\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+8: How to Select a Named Range on Another Worksheet in the Same Workbook\par
+To select the named range "Test" on another worksheet in the same workbook, you can use the following example:\par
+\par
+Application.Goto Sheets("Sheet1").Range("Test")\par
+\tab\tab\tab\tab\par
+\par
+Or, you can activate the worksheet, and then use method 7 above to select the named range:\par
+\par
+Sheets("Sheet1").Activate\par
+Range("Test").Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+9: How to Select a Named Range on a Worksheet in a Different Workbook\par
+To select the named range "Test" on a worksheet in a different workbook, you can use the following example:\par
+\par
+Application.Goto _\par
+   Workbooks("BOOK2.XLS").Sheets("Sheet2").Range("Test")\par
+\tab\tab\tab\tab\par
+\par
+Or, you can activate the worksheet, and then use method 7 above to select the named range:\par
+\par
+Workbooks("BOOK2.XLS").Sheets("Sheet2").Activate\par
+Range("Test").Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+10: How to Select a Cell Relative to the Active Cell\par
+To select a cell that is five rows below and four columns to the left of the active cell, you can use the following example:\par
+\par
+ActiveCell.Offset(5, -4).Select\par
+\tab\tab\tab\tab\par
+\par
+To select a cell that is two rows above and three columns to the right of the active cell, you can use the following example:\par
+\par
+ActiveCell.Offset(-2, 3).Select\par
+\tab\tab\tab\tab\par
+\par
+Note An error will occur if you try to select a cell that is "off the worksheet." The first example shown above will return an error if the active cell is in columns A through D, since moving four columns to the left would take the active cell to an invalid cell address.\par
+\par
+Back to the top\par
+11: How to Select a Cell Relative to Another (Not the Active) Cell\par
+To select a cell that is five rows below and four columns to the right of cell C7, you can use either of the following examples:\par
+\par
+ActiveSheet.Cells(7, 3).Offset(5, 4).Select\par
+\tab\tab\tab\tab\par
+\par
+ActiveSheet.Range("C7").Offset(5, 4).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+12: How to Select a Range of Cells Offset from a Specified Range\par
+To select a range of cells that is the same size as the named range "Test" but that is shifted four rows down and three columns to the right, you can use the following example:\par
+\par
+ActiveSheet.Range("Test").Offset(4, 3).Select\par
+\tab\tab\tab\tab\par
+\par
+If the named range is on another (not the active) worksheet, activate that worksheet first, and then select the range using the following example:\par
+\par
+Sheets("Sheet3").Activate\par
+ActiveSheet.Range("Test").Offset(4, 3).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+13: How to Select a Specified Range and Resize the Selection\par
+To select the named range "Database" and then extend the selection by five rows, you can use the following example:\par
+\par
+Range("Database").Select\par
+Selection.Resize(Selection.Rows.Count + 5, _\par
+   Selection.Columns.Count).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+14: How to Select a Specified Range, Offset It, and Then Resize It\par
+To select a range four rows below and three columns to the right of the named range "Database" and include two rows and one column more than the named range, you can use the following example:\par
+\par
+Range("Database").Select\par
+Selection.Offset(4, 3).Resize(Selection.Rows.Count + 2, _\par
+   Selection.Columns.Count + 1).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+15: How to Select the Union of Two or More Specified Ranges\par
+To select the union (that is, the combined area) of the two named ranges "Test" and "Sample," you can use the following example:\par
+\par
+Application.Union(Range("Test"), Range("Sample")).Select\par
+\tab\tab\tab\tab\par
+\par
+Note that both ranges must be on the same worksheet for this example to work. Note also that the Union method does not work across sheets. For example, this line works fine\par
+\par
+Set y = Application.Union(Range("Sheet1!A1:B2"), Range("Sheet1!C3:D4"))\par
+\tab\tab\tab\tab\par
+\par
+but this line\par
+\par
+Set y = Application.Union(Range("Sheet1!A1:B2"), Range("Sheet2!C3:D4"))\par
+\tab\tab\tab\tab\par
+\par
+returns the error message:\par
+Union method of application class failed\par
+Back to the top\par
+16: How to Select the Intersection of Two or More Specified Ranges\par
+To select the intersection of the two named ranges "Test" and "Sample," you can use the following example:\par
+\par
+Application.Intersect(Range("Test"), Range("Sample")).Select\par
+\tab\tab\tab\tab\par
+\par
+Note that both ranges must be on the same worksheet for this example to work.\par
+\par
+\par
+\par
+Examples 17-21 in this article refer to the following sample set of data. Each example states the range of cells in the sample data that would be selected.\par
+\par
+   A1: Name    B1: Sales    C1: Quantity\par
+   A2: a       B2: $10      C2: 5\par
+   A3: b       B3:          C3: 10\par
+   A4: c       B4: $10      C4: 5\par
+   A5:         B5:          C5:\par
+   A6: Total   B6: $20      C6: 20\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+17: How to Select the Last Cell of a Column of Contiguous Data\par
+To select the last cell in a contiguous column, use the following example:\par
+\par
+ActiveSheet.Range("a1").End(xlDown).Select\par
+\tab\tab\tab\tab\par
+\par
+When this code is used with the sample table, cell A4 will be selected.\par
+\par
+Back to the top\par
+18: How to Select the Blank Cell at Bottom of a Column of Contiguous Data\par
+To select the cell below a range of contiguous cells, use the following example:\par
+\par
+ActiveSheet.Range("a1").End(xlDown).Offset(1,0).Select\par
+\tab\tab\tab\tab\par
+\par
+When this code is used with the sample table, cell A5 will be selected.\par
+\par
+Back to the top\par
+19: How to Select an Entire Range of Contiguous Cells in a Column\par
+To select a range of contiguous cells in a column, use one of the following examples:\par
+\par
+ActiveSheet.Range("a1", ActiveSheet.Range("a1").End(xlDown)).Select\par
+\tab\tab\tab\tab\par
+\par
+   -or-\par
+\tab\tab\tab\tab\par
+\par
+ActiveSheet.Range("a1:" & ActiveSheet.Range("a1"). _\par
+      End(xlDown).Address).Select\par
+\tab\tab\tab\tab\par
+\par
+When this code is used with the sample table, cells A1 through A4 will be selected.\par
+\par
+Back to the top\par
+20: How to Select an Entire Range of Non-Contiguous Cells in a Column\par
+To select a range of cells that are non-contiguous, use one of the following examples:\par
+\par
+ActiveSheet.Range("a1",ActiveSheet.Range("a65536").End(xlUp)).Select\par
+\tab\tab\tab\tab\par
+\par
+   -or-\par
+\tab\tab\tab\tab\par
+\par
+ActiveSheet.Range("a1:" & ActiveSheet.Range("a65536"). _\par
+   End(xlUp).Address).Select\par
+\tab\tab\tab\tab\par
+\par
+When this code is used with the sample table, it will select cells A1 through A6.\par
+\par
+Back to the top\par
+21: How to Select a Rectangular Range of Cells\par
+In order to select a rectangular range of cells around a cell, use the CurrentRegion method. The range selected by the CurrentRegion method is an area bounded by any combination of blank rows and blank columns. The following is an example of how to use the CurrentRegion method:\par
+\par
+ActiveSheet.Range("a1").CurrentRegion.Select\par
+\tab\tab\tab\tab\par
+\par
+This code will select cells A1 through C4. Other examples to select the same range of cells are listed below:\par
+\par
+ActiveSheet.Range("a1", _\par
+   ActiveSheet.Range("a1").End(xlDown).End(xlToRight)).Select\par
+\tab\tab\tab\tab\par
+\par
+   -or-\par
+\tab\tab\tab\tab\par
+\par
+ActiveSheet.Range("a1:" & _\par
+   ActiveSheet.Range("a1").End(xlDown).End(xlToRight).Address).Select\par
+\tab\tab\tab\tab\par
+\par
+In some instances, you may want to select cells A1 through C6. In this example, the CurrentRegion method will not work because of the blank line on Row 5. The following examples will select all of the cells:\par
+\par
+lastCol = ActiveSheet.Range("a1").End(xlToRight).Column\par
+lastRow = ActiveSheet.Cells(65536, lastCol).End(xlUp).Row\par
+ActiveSheet.Range("a1", ActiveSheet.Cells(lastRow, lastCol)).Select\par
+\tab\tab\tab\tab\par
+\par
+    -or-\par
+\tab\tab\tab\tab\par
+\par
+lastCol = ActiveSheet.Range("a1").End(xlToRight).Column\par
+lastRow = ActiveSheet.Cells(65536, lastCol).End(xlUp).Row\par
+ActiveSheet.Range("a1:" & _\par
+   ActiveSheet.Cells(lastRow, lastCol).Address).Select\par
+\tab\tab\tab\tab\par
+\par
+Back to the top\par
+22. How to Select Multiple Non-Contiguous Columns of Varying Length\par
+To select multiple non-contiguous columns of varying length, use the following sample table and macro example:\par
+\par
+   A1: 1  B1: 1  C1: 1  D1: 1\par
+   A2: 2  B2: 2  C2: 2  D2: 2\par
+   A3: 3  B3: 3  C3: 3  D3: 3\par
+   A4:    B4: 4  C4: 4  D4: 4\par
+   A5:    B5: 5  C5: 5  D5:\par
+   A6:    B6:    C6: 6  D6:\par
+\tab\tab\tab\tab\par
+\par
+StartRange = "A1"\par
+EndRange = "C1"\par
+Set a = Range(StartRange, Range(StartRange).End(xlDown))\par
+Set b = Range(EndRange, Range(EndRange).End(xlDown))\par
+Union(a,b).Select\par
+\tab\tab\tab\tab\par
+\par
+When this code is used with the sample table, cells A1:A3 and C1:C6 will be selected.\par
+Back to the top\par
+NOTES ON THE EXAMPLES\par
+\par
+    The ActiveSheet property can usually be omitted, because it is implied if a specific sheet is not named. For example, instead of\par
+\par
+    ActiveSheet.Range("D5").Select\par
+    \tab\tab\tab\tab\tab\tab\par
+\par
+    you can use:\par
+\par
+    Range("D5").Select\par
+    \tab\tab\tab\tab\tab\tab\par
+\par
+    The ActiveWorkbook property can also usually be omitted. Unless a specific workbook is named, the active workbook is implied.\par
+    When you use the Application.Goto method, if you want to use two Cells methods within the Range method when the specified range is on another (not the active) worksheet, you must include the Sheets object each time. For example:\par
+\par
+    Application.Goto Sheets("Sheet1").Range( _\par
+          Sheets("Sheet1").Range(Sheets("Sheet1").Cells(2, 3), _\par
+          Sheets("Sheet1").Cells(4, 5)))\par
+    \tab\tab\tab\tab\tab\par
+\par
+    For any item in quotation marks (for example, the named range "Test"), you can also use a variable whose value is a text string. For example, instead of\par
+\par
+    ActiveWorkbook.Sheets("Sheet1").Activate\par
+    \tab\tab\tab\tab\tab\tab\par
+\par
+    you can use\par
+\par
+    ActiveWorkbook.Sheets(myVar).Activate\par
+    \tab\tab\tab\tab\tab\tab\par
+\par
+    where the value of myVar is "Sheet1".\par
+\par
+\par
+}
+ 
